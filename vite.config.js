@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3001,
-    https: true,
+    https: false,
     fs: {
       cachedChecks: false,
     },
