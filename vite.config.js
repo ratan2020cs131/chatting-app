@@ -20,6 +20,7 @@ export default defineConfig({
       routes: "/src/routes",
       screen: "/src/screens",
       services: "/src/services",
+      storage: "/src/storage",
       utils: "/src/utils",
     },
   },
