@@ -1,0 +1,25 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "prettier.printWidth": 80,
+  "editor.wordWrap": "off",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
