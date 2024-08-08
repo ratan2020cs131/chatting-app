@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
-  "prettier.printWidth": 80,
+  "prettier.printWidth": 100,
   "editor.wordWrap": "off",
   "files.associations": {
     "*.css": "tailwindcss"
@@ -15,9 +15,6 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "DotJoshJohnson.xml"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
