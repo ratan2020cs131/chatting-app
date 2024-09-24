@@ -2,7 +2,7 @@ import React from "react";
 
 const sizeConfig = {
   small: { width: 1, height: 1 },
-  medium: { width: 1.5, height: 1.5 },
+  medium: { width: 1.2, height: 1.2 },
   large: { width: 2, height: 2 },
   xlarge: { width: 3, height: 3 },
 };

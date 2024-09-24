@@ -59,7 +59,7 @@ const TextInput = ({
       <div className={`relative flex items-center`}>
         {icon && (
           <span className="absolute left-2">
-            <IconWrapper Icon={icon} color={colors.primary.black} />
+            <IconWrapper Icon={icon} color={colors.secondary.gray} />
           </span>
         )}
         <Field.Input
@@ -79,9 +79,10 @@ const TextInput = ({
           <span className="absolute right-2">
             <IconButton
               icon={show ? ClosedEyeIcon : OpenEyeIcon}
-              color={colors.primary.black}
+              color={colors.secondary.gray}
               onClick={toggleHide}
               tooltip={show ? "Hide" : "Show"}
+              size="medium"
             />
           </span>
         )}

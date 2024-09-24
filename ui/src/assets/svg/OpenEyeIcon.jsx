@@ -6,12 +6,13 @@ const OpenEyeIcon = ({ height = 1, width = 1, fill = "#0F0F0F" }) => {
       height={`${height}rem`}
       width={`${width}rem`}
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
     >
-      <g stroke={fill} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-        <path d="M12 5a10 10 0 0 0-9.5 7 10 10 0 0 0 19 0c-1.2-4-5-7-9.5-7Z" />
-      </g>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M6.3 15.6A17.9 17.9 0 0 1 3.2 12c.5-.8 1.6-2.3 3.1-3.6A8.9 8.9 0 0 1 12 6c2.2 0 4.1 1 5.7 2.4 1.5 1.3 2.6 2.8 3.1 3.6-.5.8-1.6 2.3-3.1 3.6A8.9 8.9 0 0 1 12 18c-2.2 0-4.1-1-5.7-2.4ZM12 4C9.1 4 6.8 5.4 5 7 3.2 8.3 2 10 1.5 11c-.4.6-.4 1.4 0 2 .5.9 1.7 2.6 3.5 4 1.8 1.6 4.1 3 7 3 2.9 0 5.2-1.4 7-3 1.8-1.4 3-3.1 3.5-4 .4-.6.4-1.4 0-2-.5-.9-1.7-2.6-3.5-4-1.8-1.6-4.1-3-7-3Zm-2 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+        fill={fill}
+      />
     </svg>
   );
 };
