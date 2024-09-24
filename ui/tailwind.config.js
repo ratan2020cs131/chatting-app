@@ -9,7 +9,11 @@ export const colors = {
     error: "#e76f51",
     blue: "#0096c7",
   },
-  secondary: { gray: "#6c757d" },
+  secondary: {
+    gray: "#6c757d",
+    link: "#4361ee",
+    green: "#29bf12",
+  },
   light: {
     green: "#c7f9cc",
   },
