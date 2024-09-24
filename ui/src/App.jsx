@@ -19,6 +19,7 @@ const App = () => {
 
       <div className="flex gap-4 items-center">
         <Button loading title="Loading" />
+        <Button loading title="Loading" variant="success" />
         <Button icon={SearchIcon} title="Search" variant="ghost" />
       </div>
     </div>

@@ -10,6 +10,7 @@ const sizeConfig = {
 const variantConfig = {
   default: "text-primary-white bg-primary-blue",
   ghost: "text-primary-blue bg-primary-white border border-primary-blue",
+  success: "text-primary-white bg-primary-green",
 };
 
 /**
@@ -20,7 +21,7 @@ const variantConfig = {
  *  title: string,
  *  size?: string,
  *  fullWidth?: boolean,
- *  variant?: string,
+ *  variant?: 'default' | 'ghost' | 'success',
  *  loading?: boolean,
  * }} props
  */
@@ -48,7 +49,7 @@ const Button = ({
       {(loading || icon) && (
         <IconWrapper
           Icon={loading ? LoadingIcon : icon}
-          color={colors.primary[variant === "default" ? "white" : "blue"]}
+          color={colors.primary[variant === "ghost" ? "blue" : "white"]}
         />
       )}
     </button>
