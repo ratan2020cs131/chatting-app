@@ -13,6 +13,8 @@ const variantConfig = {
   success: "text-primary-white bg-primary-green",
 };
 
+const disabledClasses = "border-none !bg-primary-gray !text-secondary-gray";
+
 /**
  * Button Component
  * @param {{
@@ -23,6 +25,7 @@ const variantConfig = {
  *  fullWidth?: boolean,
  *  variant?: 'default' | 'ghost' | 'success',
  *  loading?: boolean,
+ *  disabled?: boolean,
  * }} props
  */
 
@@ -34,6 +37,7 @@ const Button = ({
   fullWidth,
   variant = "default",
   loading,
+  disabled,
 }) => {
   return (
     <button
@@ -43,7 +47,9 @@ const Button = ({
         ${variantConfig[variant]}
         ${sizeConfig[size]} 
         ${fullWidth && "flex-1"}
+        ${disabled && disabledClasses}
         `}
+      disabled={disabled}
     >
       {title}
       {(loading || icon) && (
