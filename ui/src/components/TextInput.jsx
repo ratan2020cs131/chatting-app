@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { Field } from "@ark-ui/react";
 import { TypoSmallRegular } from "./TypoGraphy";
-import IconWrapper from "./IconWrapper";
-import { colors } from "../../tailwind.config";
-import { useState } from "react";
+import IconWrapper from "components/IconWrapper";
+import { colors } from "root/tailwind.config";
 import { ClosedEyeIcon, OpenEyeIcon } from "assets/svg";
 import { useCallback } from "react";
-import IconButton from "./IconButton";
+import IconButton from "components/IconButton";
 
 const baseClasses = `border rounded-md p-2 w-full
 hover:border-primary-black hover:placeholder-primary-black`;
