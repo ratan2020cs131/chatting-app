@@ -2,6 +2,7 @@ import { SearchIcon } from "assets/svg";
 import "./index.css";
 import TextInput from "components/TextInput";
 import TextArea from "components/TextArea";
+import Button from "components/Button";
 
 const App = () => {
   return (
@@ -15,6 +16,11 @@ const App = () => {
       <TextArea variant="error" title="Error" placeholder="This is error input" required />
       <TextArea variant="success" title="Success" placeholder="This is success input" required />
       <TextArea title="Default" placeholder="This is default input" />
+
+      <div className="flex gap-4 items-center">
+        <Button loading title="Loading" />
+        <Button icon={SearchIcon} title="Search" variant="ghost" />
+      </div>
     </div>
   );
 };

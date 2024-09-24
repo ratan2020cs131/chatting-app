@@ -22,6 +22,16 @@ export default {
       fontFamily: {
         sans: ["PT Sans"],
       },
+      animation: {
+        loading: "rotate 2s infinite",
+      },
+      keyframes: {
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(180deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
       boxShadow: {
         overlay: "0 0 5px 0 #00000070",
         input: "0 0 0 3px #caf0f8",

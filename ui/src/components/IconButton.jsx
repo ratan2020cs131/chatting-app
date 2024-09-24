@@ -3,11 +3,11 @@ import IconWrapper from "./IconWrapper";
 import Tooltip from "./Tooltip";
 const IconButton = ({ onClick, icon, color, size, tooltip }) => {
   return (
-    <span onClick={onClick}>
-      <Tooltip tooltip={tooltip}>
+    <Tooltip tooltip={tooltip}>
+      <span onClick={onClick}>
         <IconWrapper Icon={icon} color={color} size={size} />
-      </Tooltip>
-    </span>
+      </span>
+    </Tooltip>
   );
 };
 export default IconButton;

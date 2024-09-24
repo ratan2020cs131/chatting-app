@@ -22,7 +22,7 @@ const variantClasses = {
  * TextInput Component
  * @param {{
  *   variant: 'error' | 'success' | 'default',
- *   title: string,
+ *   title?: string,
  *   placeholder: string,
  *   required?: boolean,
  *   fullWidth?: boolean,
@@ -33,7 +33,7 @@ const variantClasses = {
 const TextInput = ({
   fullWidth,
   title,
-  placeholder,
+  placeholder = "Enter value",
   required,
   value,
   onChange,
@@ -48,7 +48,7 @@ const TextInput = ({
   }, []);
 
   return (
-    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "!w-full" : "w-[24rem]"}`}>
+    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "flex-1" : "w-[24rem]"}`}>
       <Field.Label className="text-sm text-primary-black font-semibold flex gap-1">
         {title} {required && <TypoSmallRegular color="text-primary-error">*</TypoSmallRegular>}
       </Field.Label>
