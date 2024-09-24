@@ -9,6 +9,7 @@ export const colors = {
     error: "#e76f51",
     blue: "#0096c7",
   },
+  secondary: { gray: "#6c757d" },
   light: {
     green: "#c7f9cc",
   },

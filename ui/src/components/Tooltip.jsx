@@ -5,9 +5,11 @@ const Tooltip = ({ children, tooltip }) => (
   <ArkTooltip.Root>
     <ArkTooltip.Trigger className="flex">{children}</ArkTooltip.Trigger>
     <ArkTooltip.Positioner>
-      <ArkTooltip.Content className="px-3 py-2 rounded-lg bg-primary-white shadow-overlay">
-        {tooltip}
-      </ArkTooltip.Content>
+      {tooltip && (
+        <ArkTooltip.Content className="px-3 py-2 rounded-lg bg-primary-white shadow-overlay">
+          {tooltip}
+        </ArkTooltip.Content>
+      )}
     </ArkTooltip.Positioner>
   </ArkTooltip.Root>
 );

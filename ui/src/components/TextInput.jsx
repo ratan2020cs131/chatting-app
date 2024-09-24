@@ -1,6 +1,5 @@
 import { Field } from "@ark-ui/react";
 import { TypoSmallRegular } from "./TypoGraphy";
-import PropTypes from "prop-types";
 import IconWrapper from "./IconWrapper";
 import { colors } from "../../tailwind.config";
 import { useState } from "react";
@@ -18,6 +17,9 @@ const variantClasses = {
     "border-primary-green focus:outline-none focus:shadow-success focus:border-primary-green",
 };
 
+const disabledClasses =
+  "hover:placeholder-secondary-gray placeholder-secondary-gray border-none !bg-primary-gray !text-secondary-gray";
+
 /**
  * TextInput Component
  * @param {{
@@ -28,6 +30,7 @@ const variantClasses = {
  *   fullWidth?: boolean,
  *   secret?: boolean,
  *   icon?: Element
+ *   disabled?: boolean
  * }} props
  */
 const TextInput = ({
@@ -41,6 +44,7 @@ const TextInput = ({
   icon,
   type = "text",
   secret,
+  disabled,
 }) => {
   const [show, setShow] = useState(!secret);
   const toggleHide = useCallback(() => {
@@ -60,15 +64,18 @@ const TextInput = ({
         )}
         <Field.Input
           className={`
-          ${baseClasses} 
-          ${variantClasses[variant]}
-          ${icon && "pl-8"}`}
+            ${baseClasses} 
+            ${variantClasses[variant]}
+            ${icon && "pl-8"}
+            ${disabled && disabledClasses}
+            `}
+          disabled={disabled}
           type={!show ? "password" : type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
         />
-        {secret && (
+        {!disabled && secret && (
           <span className="absolute right-2">
             <IconButton
               icon={show ? ClosedEyeIcon : OpenEyeIcon}
@@ -82,9 +89,6 @@ const TextInput = ({
       <Field.ErrorText className="text-xs">Error Info</Field.ErrorText>
     </Field.Root>
   );
-};
-TextInput.propTypes = {
-  variant: PropTypes.oneOf(["error", "success", "default"]),
 };
 
 export default TextInput;

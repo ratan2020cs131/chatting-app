@@ -11,6 +11,7 @@ const App = () => {
       <TextInput variant="success" title="Success" placeholder="This is success input" required />
       <TextInput title="Default" placeholder="This is default input" />
       <TextInput icon={SearchIcon} title="Search" placeholder="Enter to search" />
+      <TextInput disabled icon={SearchIcon} title="Disabled" placeholder="Enter to search" />
       <TextInput secret title="Password" placeholder="Enter Password" />
 
       <TextArea variant="error" title="Error" placeholder="This is error input" required />
@@ -21,6 +22,7 @@ const App = () => {
         <Button loading title="Loading" />
         <Button loading title="Loading" variant="success" />
         <Button icon={SearchIcon} title="Search" variant="ghost" />
+        <Button disabled icon={SearchIcon} title="Search" variant="ghost" tooltip="Disabled" />
       </div>
     </div>
   );
