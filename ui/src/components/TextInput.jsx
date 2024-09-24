@@ -3,8 +3,12 @@ import { TypoSmallRegular } from "./TypoGraphy";
 import PropTypes from "prop-types";
 import IconWrapper from "./IconWrapper";
 import { colors } from "../../tailwind.config";
+import { useState } from "react";
+import { ClosedEyeIcon, OpenEyeIcon } from "assets/svg";
+import { useCallback } from "react";
+import IconButton from "./IconButton";
 
-const baseClasses = `border rounded-md p-2 w-[24rem]
+const baseClasses = `border rounded-md p-2 w-full
 hover:border-primary-black hover:placeholder-primary-black`;
 
 const variantClasses = {
@@ -22,6 +26,7 @@ const variantClasses = {
  *   placeholder: string,
  *   required?: boolean,
  *   fullWidth?: boolean,
+ *   secret?: boolean,
  *   icon?: Element
  * }} props
  */
@@ -34,13 +39,20 @@ const TextInput = ({
   onChange,
   variant = "default",
   icon,
+  type = "text",
+  secret,
 }) => {
+  const [show, setShow] = useState(!secret);
+  const toggleHide = useCallback(() => {
+    setShow((prev) => !prev);
+  }, []);
+
   return (
-    <Field.Root className="flex flex-col gap-1">
+    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "!w-full" : "w-[24rem]"}`}>
       <Field.Label className="text-sm text-primary-black font-semibold flex gap-1">
         {title} {required && <TypoSmallRegular color="text-primary-error">*</TypoSmallRegular>}
       </Field.Label>
-      <div className="relative flex items-center">
+      <div className={`relative flex items-center`}>
         {icon && (
           <span className="absolute left-2">
             <IconWrapper Icon={icon} color={colors.primary.black} />
@@ -49,13 +61,23 @@ const TextInput = ({
         <Field.Input
           className={`
           ${baseClasses} 
-          ${variantClasses[variant]} 
-          ${fullWidth && "!w-full"}
+          ${variantClasses[variant]}
           ${icon && "pl-8"}`}
+          type={!show ? "password" : type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
         />
+        {secret && (
+          <span className="absolute cursor-pointer right-2">
+            <IconButton
+              icon={show ? ClosedEyeIcon : OpenEyeIcon}
+              color={colors.primary.black}
+              onClick={toggleHide}
+              tooltip={show ? "Hide" : "Show"}
+            />
+          </span>
+        )}
       </div>
       <Field.ErrorText className="text-xs">Error Info</Field.ErrorText>
     </Field.Root>

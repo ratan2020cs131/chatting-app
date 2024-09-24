@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import IconWrapper from "./IconWrapper";
 import { colors } from "../../tailwind.config";
 
-const baseClasses = `border rounded-md p-2 w-[24rem]
+const baseClasses = `border rounded-md p-2 w-full
 hover:border-primary-black hover:placeholder-primary-black`;
 
 const variantClasses = {
@@ -34,15 +34,15 @@ const TextArea = ({
   variant = "default",
 }) => {
   return (
-    <Field.Root className="flex flex-col gap-1">
+    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "!w-full" : "w-[24rem]"}`}>
       <Field.Label className="text-sm text-primary-black font-semibold flex gap-1">
         {title} {required && <TypoSmallRegular color="text-primary-error">*</TypoSmallRegular>}
       </Field.Label>
       <Field.Textarea
         className={`
           ${baseClasses} 
-          ${variantClasses[variant]} 
-          ${fullWidth && "!w-full"}`}
+          ${variantClasses[variant]}
+        `}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

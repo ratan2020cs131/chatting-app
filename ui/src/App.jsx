@@ -8,7 +8,9 @@ const App = () => {
     <div className="min-h-screen p-4 flex flex-col gap-4">
       <TextInput variant="error" title="Error" placeholder="This is error input" required />
       <TextInput variant="success" title="Success" placeholder="This is success input" required />
-      <TextInput icon={SearchIcon} title="Default" placeholder="This is default input" />
+      <TextInput title="Default" placeholder="This is default input" />
+      <TextInput icon={SearchIcon} title="Search" placeholder="Enter to search" />
+      <TextInput secret title="Password" placeholder="Enter Password" />
 
       <TextArea variant="error" title="Error" placeholder="This is error input" required />
       <TextArea variant="success" title="Success" placeholder="This is success input" required />

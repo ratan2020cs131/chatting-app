@@ -23,6 +23,7 @@ export default {
         sans: ["PT Sans"],
       },
       boxShadow: {
+        overlay: "0 0 5px 0 #00000070",
         input: "0 0 0 3px #caf0f8",
         error: "0 0 0 3px #e76f5150",
         success: "0 0 0 3px #c7f9cc",
