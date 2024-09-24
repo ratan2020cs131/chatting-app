@@ -4,7 +4,7 @@ import Tooltip from "./Tooltip";
 const IconButton = ({ onClick, icon, color, size, tooltip }) => {
   return (
     <Tooltip tooltip={tooltip}>
-      <span onClick={onClick}>
+      <span onClick={onClick} className="cursor-pointer">
         <IconWrapper Icon={icon} color={color} size={size} />
       </span>
     </Tooltip>

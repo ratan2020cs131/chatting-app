@@ -69,7 +69,7 @@ const TextInput = ({
           onChange={onChange}
         />
         {secret && (
-          <span className="absolute cursor-pointer right-2">
+          <span className="absolute right-2">
             <IconButton
               icon={show ? ClosedEyeIcon : OpenEyeIcon}
               color={colors.primary.black}
