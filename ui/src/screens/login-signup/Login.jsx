@@ -3,6 +3,11 @@ import Button from "components/Button";
 import Card from "components/Card";
 import Link from "components/Link";
 import TextInput from "components/TextInput";
+import {
+  TypoExtraLargeSemiBold,
+  TypoLargeSemiBold,
+  TypoMediumSemiBold,
+} from "components/TypoGraphy";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import AppContainer from "screens/layouts/AppContainer";
@@ -12,7 +17,11 @@ const Login = () => {
     <AppContainer>
       <div className="grid grid-cols-2 h-full">
         <div className="bg-primary-blue"></div>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-16">
+          <span className="flex flex-col gap-2">
+            <TypoExtraLargeSemiBold>Welcome!</TypoExtraLargeSemiBold>
+            <TypoMediumSemiBold>Login to your acoount</TypoMediumSemiBold>
+          </span>
           <div className="w-[24rem] flex flex-col items-center justify-center gap-4">
             <TextInput title="Email" placeholder="Enter your email" icon={MailIcon} />
             <TextInput secret title="Password" placeholder="Enter your password" icon={LockIcon} />

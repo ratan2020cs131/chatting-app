@@ -4,8 +4,12 @@ import TextInput from "components/TextInput";
 import AppContainer from "screens/layouts/AppContainer";
 import { SearchIcon } from "assets/svg";
 import Link from "components/Link";
+import SelectDropdown from "components/SelectDropdown";
+import { useState } from "react";
 
 const Components = () => {
+  const [dropdownValue, setDropdownValue] = useState();
+
   return (
     <AppContainer>
       <TextInput variant="error" title="Error" placeholder="This is error input" required />
@@ -18,6 +22,14 @@ const Components = () => {
       <TextArea variant="error" title="Error" placeholder="This is error input" required />
       <TextArea variant="success" title="Success" placeholder="This is success input" required />
       <TextArea title="Default" placeholder="This is default input" />
+
+      <SelectDropdown
+        required
+        title="Dropdown"
+        placeholder="Select a framework"
+        value={dropdownValue}
+        onChange={(value) => setDropdownValue(value)}
+      />
 
       <div className="flex gap-4 items-center">
         <Button loading title="Loading" />

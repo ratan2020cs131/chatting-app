@@ -16,6 +16,7 @@ export const colors = {
   },
   light: {
     green: "#c7f9cc",
+    gray: "#e6e8e6",
   },
 };
 
@@ -39,6 +40,7 @@ export default {
       },
       boxShadow: {
         overlay: "0 0 5px 0 #00000070",
+        dropdown: "0 2px 5px 0 #00000070",
         input: "0 0 0 3px #caf0f8",
         error: "0 0 0 3px #e76f5150",
         success: "0 0 0 3px #c7f9cc",
