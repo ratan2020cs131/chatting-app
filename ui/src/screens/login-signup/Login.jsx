@@ -1,4 +1,4 @@
-import { LockIcon, MailIcon } from "assets/svg";
+import { LockIcon, MailIcon, RightArrowIcon } from "assets/svg";
 import Button from "components/Button";
 import Card from "components/Card";
 import Link from "components/Link";
@@ -18,14 +18,19 @@ const Login = () => {
       <div className="grid grid-cols-2 h-full">
         <div className="bg-primary-blue"></div>
         <div className="flex flex-col items-center justify-center gap-16">
-          <span className="flex flex-col gap-2">
+          <span className="flex flex-col gap-2 items-center">
             <TypoExtraLargeSemiBold>Welcome!</TypoExtraLargeSemiBold>
             <TypoMediumSemiBold>Login to your acoount</TypoMediumSemiBold>
           </span>
           <div className="w-[24rem] flex flex-col items-center justify-center gap-4">
             <TextInput title="Email" placeholder="Enter your email" icon={MailIcon} />
             <TextInput secret title="Password" placeholder="Enter your password" icon={LockIcon} />
-            <Button fullWidth loading title="Login" />
+            <Button
+              fullWidth
+              icon={RightArrowIcon}
+              // loading
+              title="Login"
+            />
             <Button
               fullWidth
               title="Create account"
