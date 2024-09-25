@@ -23,7 +23,14 @@ const Components = () => {
         <Button loading title="Loading" />
         <Button loading title="Loading" variant="success" />
         <Button icon={SearchIcon} title="Search" variant="ghost" />
-        <Button disabled icon={SearchIcon} title="Search" variant="ghost" tooltip="Disabled" />
+        <Button
+          fullWidth
+          disabled
+          icon={SearchIcon}
+          title="Search"
+          variant="ghost"
+          tooltip="Disabled"
+        />
       </div>
 
       <Link to="/login" text="Click here to go to Login" />

@@ -1,6 +1,6 @@
 import React from "react";
 import IconWrapper from "./IconWrapper";
-import LoadingIcon from "assets/svg/LoadingIcon";
+import { LoadingIcon } from "assets/svg";
 import { colors } from "root/tailwind.config";
 import Tooltip from "components/Tooltip";
 
@@ -43,14 +43,14 @@ const Button = ({
   tooltip,
 }) => {
   return (
-    <Tooltip tooltip={tooltip}>
+    <Tooltip tooltip={tooltip} fullWidth={fullWidth}>
       <button
         onClick={onClick}
         className={`
-        rounded-md font-semibold flex items-center gap-2
+        rounded-md font-semibold flex items-center gap-2 justify-center
         ${variantConfig[variant]}
         ${sizeConfig[size]} 
-        ${fullWidth && "flex-1"}
+        ${fullWidth && "w-full"}
         ${disabled && disabledClasses}
         `}
       >

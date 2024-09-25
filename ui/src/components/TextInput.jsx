@@ -29,8 +29,11 @@ const disabledClasses =
  *   required?: boolean,
  *   fullWidth?: boolean,
  *   secret?: boolean,
- *   icon?: Element
- *   disabled?: boolean
+ *   icon?: Element,
+ *   disabled?: boolean,
+ *   onChange?: Function,
+ *   value?: string|number,
+ *   type?: 'text' | 'email'| 'number',
  * }} props
  */
 const TextInput = ({
@@ -45,6 +48,7 @@ const TextInput = ({
   type = "text",
   secret,
   disabled,
+  limit,
 }) => {
   const [show, setShow] = useState(!secret);
   const toggleHide = useCallback(() => {
@@ -59,24 +63,32 @@ const TextInput = ({
       <div className={`relative flex items-center`}>
         {icon && (
           <span className="absolute left-2">
-            <IconWrapper Icon={icon} color={colors.secondary.gray} />
+            <IconWrapper size="medium" Icon={icon} color={colors.secondary.gray} />
           </span>
         )}
         <Field.Input
+          {...(limit && { maxLength: limit })}
           className={`
             ${baseClasses} 
             ${variantClasses[variant]}
-            ${icon && "pl-8"}
+            ${icon && "pl-10"}
+            ${limit && "pr-14"}
             ${disabled && disabledClasses}
             `}
           disabled={disabled}
           type={!show ? "password" : type}
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
+          onChange={handleInput({ type, onChange })}
         />
-        {!disabled && secret && (
-          <span className="absolute right-2">
+
+        <span className="absolute right-2">
+          {limit && (
+            <TypoSmallRegular>
+              {value?.length || 0} / {limit}
+            </TypoSmallRegular>
+          )}
+          {!disabled && secret && (
             <IconButton
               icon={show ? ClosedEyeIcon : OpenEyeIcon}
               color={colors.secondary.gray}
@@ -84,12 +96,20 @@ const TextInput = ({
               tooltip={show ? "Hide" : "Show"}
               size="medium"
             />
-          </span>
-        )}
+          )}
+        </span>
       </div>
       <Field.ErrorText className="text-xs">Error Info</Field.ErrorText>
     </Field.Root>
   );
 };
-
 export default TextInput;
+
+const handleInput =
+  ({ type, onChange }) =>
+  (e) => {
+    const inputValue = e.target.value;
+    if (type === "number") {
+      if (/^\d*$/.test(inputValue) && inputValue.toString().length <= 10) onChange(inputValue);
+    } else onChange(inputValue);
+  };
