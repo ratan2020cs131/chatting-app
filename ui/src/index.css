@@ -6,3 +6,13 @@
     @apply font-sans;
   }
 }
+@layer utilities {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    @apply appearance-none;
+    margin: 0; /* Remove margin in Firefox */
+  }
+  input[type="number"] {
+    -moz-appearance: textfield; /* Hide arrows in Firefox */
+  }
+}

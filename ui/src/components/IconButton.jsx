@@ -1,7 +1,18 @@
 import React from "react";
 import IconWrapper from "./IconWrapper";
 import Tooltip from "./Tooltip";
-const IconButton = ({ onClick, icon, color, size, tooltip }) => {
+
+/**
+ * IconWrapper Component
+ * @param {{
+ *   size: 'small' | 'medium' | 'large' | 'xlarge',
+ *   icon: Element,
+ *   color: string,
+ *   tooltip: string,
+ *   onClick: Function,
+ * }} props
+ */
+const IconButton = ({ onClick, icon, color, size = "small", tooltip }) => {
   return (
     <Tooltip tooltip={tooltip}>
       <span onClick={onClick} className="cursor-pointer">

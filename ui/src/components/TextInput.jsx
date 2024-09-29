@@ -1,12 +1,11 @@
+import { useState } from "react";
 import { Field } from "@ark-ui/react";
 import { TypoSmallRegular } from "./TypoGraphy";
-import PropTypes from "prop-types";
-import IconWrapper from "./IconWrapper";
-import { colors } from "../../tailwind.config";
-import { useState } from "react";
+import IconWrapper from "components/IconWrapper";
+import { colors } from "root/tailwind.config";
 import { ClosedEyeIcon, OpenEyeIcon } from "assets/svg";
 import { useCallback } from "react";
-import IconButton from "./IconButton";
+import IconButton from "components/IconButton";
 
 const baseClasses = `border rounded-md p-2 w-full
 hover:border-primary-black hover:placeholder-primary-black`;
@@ -18,6 +17,9 @@ const variantClasses = {
     "border-primary-green focus:outline-none focus:shadow-success focus:border-primary-green",
 };
 
+const disabledClasses =
+  "hover:placeholder-secondary-gray placeholder-secondary-gray border-none !bg-primary-gray !text-secondary-gray";
+
 /**
  * TextInput Component
  * @param {{
@@ -27,7 +29,11 @@ const variantClasses = {
  *   required?: boolean,
  *   fullWidth?: boolean,
  *   secret?: boolean,
- *   icon?: Element
+ *   icon?: Element,
+ *   disabled?: boolean,
+ *   onChange?: Function,
+ *   value?: string|number,
+ *   type?: 'text' | 'email'| 'number',
  * }} props
  */
 const TextInput = ({
@@ -41,6 +47,8 @@ const TextInput = ({
   icon,
   type = "text",
   secret,
+  disabled,
+  limit,
 }) => {
   const [show, setShow] = useState(!secret);
   const toggleHide = useCallback(() => {
@@ -48,43 +56,60 @@ const TextInput = ({
   }, []);
 
   return (
-    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "flex-1" : "w-[24rem]"}`}>
+    <Field.Root className={`flex flex-col gap-1 ${fullWidth ? "w-full" : "w-[24rem]"}`}>
       <Field.Label className="text-sm text-primary-black font-semibold flex gap-1">
         {title} {required && <TypoSmallRegular color="text-primary-error">*</TypoSmallRegular>}
       </Field.Label>
       <div className={`relative flex items-center`}>
         {icon && (
           <span className="absolute left-2">
-            <IconWrapper Icon={icon} color={colors.primary.black} />
+            <IconWrapper size="medium" Icon={icon} color={colors.secondary.gray} />
           </span>
         )}
         <Field.Input
+          {...(limit && { maxLength: limit })}
           className={`
-          ${baseClasses} 
-          ${variantClasses[variant]}
-          ${icon && "pl-8"}`}
+            ${baseClasses} 
+            ${variantClasses[variant]}
+            ${icon && "pl-10"}
+            ${limit && "pr-14"}
+            ${disabled && disabledClasses}
+            `}
+          disabled={disabled}
           type={!show ? "password" : type}
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
+          onChange={handleInput({ type, onChange })}
         />
-        {secret && (
-          <span className="absolute right-2">
+
+        <span className="absolute right-2">
+          {limit && (
+            <TypoSmallRegular>
+              {value?.length || 0} / {limit}
+            </TypoSmallRegular>
+          )}
+          {!disabled && secret && (
             <IconButton
               icon={show ? ClosedEyeIcon : OpenEyeIcon}
-              color={colors.primary.black}
+              color={colors.secondary.gray}
               onClick={toggleHide}
               tooltip={show ? "Hide" : "Show"}
+              size="medium"
             />
-          </span>
-        )}
+          )}
+        </span>
       </div>
       <Field.ErrorText className="text-xs">Error Info</Field.ErrorText>
     </Field.Root>
   );
 };
-TextInput.propTypes = {
-  variant: PropTypes.oneOf(["error", "success", "default"]),
-};
-
 export default TextInput;
+
+const handleInput =
+  ({ type, onChange }) =>
+  (e) => {
+    const inputValue = e.target.value;
+    if (type === "number") {
+      if (/^\d*$/.test(inputValue) && inputValue.toString().length <= 10) onChange(inputValue);
+    } else onChange(inputValue);
+  };
