@@ -1,13 +1,13 @@
 import { LockIcon, MailIcon, RightArrowIcon, UserIcon } from "assets/svg";
 import CallIcon from "assets/svg/CallIcon";
 import Button from "components/Button";
-import Link from "components/Link";
 import SelectDropdown from "components/SelectDropdown";
 import TextInput from "components/TextInput";
 import { TypoExtraLargeSemiBold, TypoMediumSemiBold } from "components/TypoGraphy";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContainer from "screens/layouts/AppContainer";
+import { countryCode } from "screens/login-signup/constants";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -34,10 +34,7 @@ const Signup = () => {
                 width="w-[6rem]"
                 title="Code"
                 placeholder="+00"
-                options={[
-                  { label: "US", value: "+1" },
-                  { label: "IN", value: "+91" },
-                ]}
+                options={countryCode}
               />
               <TextInput
                 fullWidth

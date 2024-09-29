@@ -23,14 +23,15 @@ const Login = () => {
             <TypoMediumSemiBold>Login to your acoount</TypoMediumSemiBold>
           </span>
           <div className="w-[24rem] flex flex-col items-center justify-center gap-4">
-            <TextInput title="Email" placeholder="Enter your email" icon={MailIcon} />
-            <TextInput secret title="Password" placeholder="Enter your password" icon={LockIcon} />
-            <Button
-              fullWidth
-              icon={RightArrowIcon}
-              // loading
-              title="Login"
+            <TextInput required title="Email" placeholder="Enter your email" icon={MailIcon} />
+            <TextInput
+              required
+              secret
+              title="Password"
+              placeholder="Enter your password"
+              icon={LockIcon}
             />
+            <Button fullWidth icon={RightArrowIcon} title="Login" />
             <Button
               fullWidth
               title="Create account"
