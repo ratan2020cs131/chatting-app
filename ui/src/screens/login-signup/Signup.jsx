@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContainer from "screens/layouts/AppContainer";
 import { countryCode } from "screens/login-signup/constants";
+import IconWrapper from "components/IconWrapper";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Signup = () => {
     <AppContainer>
       <div className="grid grid-cols-2 h-full">
         <div className="bg-primary-blue flex flex-col items-center justify-center">
-          <RegisterSvg />
+          <IconWrapper size="xxlarge" Icon={RegisterSvg} />
         </div>
         <div className="flex flex-col items-center justify-center gap-16">
           <span className="flex flex-col gap-2 items-center">
