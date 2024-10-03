@@ -1,6 +1,7 @@
-import { LockIcon, MailIcon, RightArrowIcon } from "assets/svg";
+import { LockIcon, LoginSvg, MailIcon, RightArrowIcon } from "assets/svg";
 import Button from "components/Button";
 import Card from "components/Card";
+import IconWrapper from "components/IconWrapper";
 import Link from "components/Link";
 import TextInput from "components/TextInput";
 import {
@@ -16,7 +17,9 @@ const Login = () => {
   return (
     <AppContainer>
       <div className="grid grid-cols-2 h-full">
-        <div className="bg-primary-blue"></div>
+        <div className="bg-primary-blue flex flex-col items-center justify-center">
+          <IconWrapper Icon={LoginSvg} size="xxlarge" />
+        </div>
         <div className="flex flex-col items-center justify-center gap-16">
           <span className="flex flex-col gap-2 items-center">
             <TypoExtraLargeSemiBold>Welcome!</TypoExtraLargeSemiBold>
