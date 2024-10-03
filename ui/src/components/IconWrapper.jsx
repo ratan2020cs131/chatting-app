@@ -5,12 +5,13 @@ const sizeConfig = {
   medium: { width: 1.2, height: 1.2 },
   large: { width: 2, height: 2 },
   xlarge: { width: 3, height: 3 },
+  xxlarge: { width: 30, height: 30 },
 };
 
 /**
  * IconWrapper Component
  * @param {{
- *   size: 'small' | 'medium' | 'large' | 'xlarge',
+ *   size: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge',
  *   Icon: Element,
  *   color: string
  * }} props

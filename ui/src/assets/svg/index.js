@@ -7,3 +7,5 @@ export { default as OpenEyeIcon } from "assets/svg/OpenEyeIcon";
 export { default as ClosedEyeIcon } from "assets/svg/ClosedEyeIcon";
 export { default as LockIcon } from "assets/svg/LockIcon";
 export { default as RightArrowIcon } from "assets/svg/RightArrowIcon";
+export { default as LoginSvg } from "assets/svg/LoginSvg";
+export { default as RegisterSvg } from "assets/svg/RegisterSvg";

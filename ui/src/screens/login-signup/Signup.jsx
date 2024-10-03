@@ -1,4 +1,4 @@
-import { LockIcon, MailIcon, RightArrowIcon, UserIcon } from "assets/svg";
+import { LockIcon, MailIcon, RightArrowIcon, RegisterSvg, UserIcon } from "assets/svg";
 import CallIcon from "assets/svg/CallIcon";
 import Button from "components/Button";
 import SelectDropdown from "components/SelectDropdown";
@@ -16,7 +16,9 @@ const Signup = () => {
   return (
     <AppContainer>
       <div className="grid grid-cols-2 h-full">
-        <div className="bg-primary-blue"></div>
+        <div className="bg-primary-blue flex flex-col items-center justify-center">
+          <RegisterSvg />
+        </div>
         <div className="flex flex-col items-center justify-center gap-16">
           <span className="flex flex-col gap-2 items-center">
             <TypoExtraLargeSemiBold>Welcome!</TypoExtraLargeSemiBold>

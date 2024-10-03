@@ -13,6 +13,7 @@ export const colors = {
     gray: "#6c757d",
     link: "#4361ee",
     green: "#29bf12",
+    lime: "#c6ff00",
   },
   light: {
     green: "#c7f9cc",
