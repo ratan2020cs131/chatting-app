@@ -18,3 +18,17 @@ export const logger = createLogger({
     new transports.Console(), // Log to console
   ],
 });
+
+// Middleware to log incoming requests
+export const logRequests = (req, res, next) => {
+  const method = req.method;
+  const route = req.originalUrl;
+
+  logger.info({
+    message: "Request received",
+    method,
+    route,
+  });
+
+  next();
+};
