@@ -40,7 +40,7 @@ importers:
         specifier: 5.2.1
         version: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.15.0))(eslint@9.15.0)(prettier@3.3.3)
       eslint-plugin-simple-import-sort:
-        specifier: ^12.1.1
+        specifier: 12.1.1
         version: 12.1.1(eslint@9.15.0)
       globals:
         specifier: 15.12.0
