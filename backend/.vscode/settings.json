@@ -1,0 +1,27 @@
+{
+  // Automatically fix ESLint issues and sort imports when saving
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true, // Fix all ESLint issues on save
+    "source.organizeImports": true // Sort imports automatically
+  },
+
+  // Enable format on save (optional, if Prettier is installed)
+  "editor.formatOnSave": true,
+
+  // Ensure ESLint validation for JS and TS files
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Disable built-in VSCode JavaScript formatter if Prettier is used
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
