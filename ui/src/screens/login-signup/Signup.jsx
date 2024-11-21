@@ -42,8 +42,6 @@ const Signup = () => {
     if (Math.abs(touchMoveY.current) > movementThreshold) {
       if (touchMoveY.current < 0) {
         setIsVisible(false);
-      } else {
-        setIsVisible(true);
       }
     }
     touchStartY.current = 0;
