@@ -1,12 +1,13 @@
+import dotenv from "dotenv";
 import express from "express";
 import { createServer } from "http";
-import { logger, logRequests } from "./utils/logger.util.js";
-import { ConnectMongo } from "./database/connection.js";
-import dotenv from "dotenv";
-import indexRoute from "./routes/index.js";
 import { Server } from "socket.io";
+
+import { ConnectMongo } from "./database/connection.js";
+import indexRoute from "./routes/index.js";
 import { initSocket } from "./socket/index.js";
 import { socketEventEmitterMiddleWare } from "./socket/socket.emit.js";
+import { logger, logRequests } from "./utils/logger.util.js";
 
 dotenv.config({ path: "./.env" });
 

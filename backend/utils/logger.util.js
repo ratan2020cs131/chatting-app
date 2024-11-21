@@ -14,7 +14,7 @@ export const logger = createLogger({
   format: combine(
     colorize({ all: true }),
     timestamp({ format: "DD-MM-YYYY HH:mm:ss" }), // Automatically generate timestamp
-    customFormat
+    customFormat,
   ),
   transports: [
     new transports.Console(), // Log to console
