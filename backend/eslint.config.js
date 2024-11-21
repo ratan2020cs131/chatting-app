@@ -5,15 +5,15 @@ import globals from "globals";
 
 export default [
   {
-    ...js.configs.recommended, // Use recommended configuration from @eslint/js
+    ...js.configs.recommended,
     languageOptions: {
-      globals: globals.node, // Add Node.js global variables
+      globals: globals.node,
     },
   },
   {
     plugins: {
-      prettier: eslintPluginPrettier, // Add Prettier plugin
-      "simple-import-sort": simpleImportSort, // Add Simple Import Sort plugin
+      prettier: eslintPluginPrettier,
+      "simple-import-sort": simpleImportSort,
     },
     rules: {
       "no-unused-vars": "error",
