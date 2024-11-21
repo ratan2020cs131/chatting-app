@@ -1,6 +1,11 @@
-import { LockIcon, LoginSvg, MailIcon, RightArrowIcon } from "assets/svg";
+import {
+  DobleChevronUpIcon,
+  LockIcon,
+  LoginSvg,
+  MailIcon,
+  RightArrowIcon,
+} from "assets/svg";
 import Button from "components/Button";
-import Card from "components/Card";
 import IconWrapper from "components/IconWrapper";
 import Link from "components/Link";
 import TextInput from "components/TextInput";
@@ -11,20 +16,35 @@ import {
 import React from "react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { colors } from "root/tailwind.config";
 import AppContainer from "screens/layouts/AppContainer";
+
 const Login = () => {
   const navigate = useNavigate();
   const touchStartY = useRef(0);
+  const touchMoveY = useRef(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const handleTouchStart = (e) => {
     touchStartY.current = e.touches[0].clientY;
+    touchMoveY.current = 0;
   };
 
-  const handleTouchEnd = (e) => {
-    const touchEndY = e.changedTouches[0].clientX;
-    if (touchStartY.current - touchEndY > 20) setIsVisible(false);
-    if (touchEndY - touchStartY.current > 20) setIsVisible(true);
+  const handleTouchMove = (e) => {
+    touchMoveY.current = e.touches[0].clientY - touchStartY.current;
+  };
+
+  const handleTouchEnd = () => {
+    const movementThreshold = 20;
+    if (Math.abs(touchMoveY.current) > movementThreshold) {
+      if (touchMoveY.current < 0) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    }
+    touchStartY.current = 0;
+    touchMoveY.current = 0;
   };
 
   return (
@@ -36,10 +56,24 @@ const Login = () => {
             : "transform translate-y-[-100%] md:translate-y-0"
         }`}
         onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="bg-primary-blue h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative bg-primary-blue h-screen flex flex-col items-center justify-center overflow-hidden">
           <IconWrapper Icon={LoginSvg} size="xxlarge" />
+          <div className="flex md:hidden flex-col absolute bottom-8 items-center animate-bounce">
+            <IconWrapper
+              Icon={DobleChevronUpIcon}
+              size="large"
+              color={colors.primary.white}
+            />
+            <TypoMediumSemiBold color="text-primary-white">
+              Slide up to
+            </TypoMediumSemiBold>
+            <TypoExtraLargeSemiBold color="text-primary-white">
+              Login!
+            </TypoExtraLargeSemiBold>
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-16 px-4 py-8">
           <span className="flex flex-col gap-2 items-center">

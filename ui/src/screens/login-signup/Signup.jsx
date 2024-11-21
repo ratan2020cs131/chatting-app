@@ -4,6 +4,7 @@ import {
   RightArrowIcon,
   RegisterSvg,
   UserIcon,
+  DobleChevronUpIcon,
 } from "assets/svg";
 import CallIcon from "assets/svg/CallIcon";
 import Button from "components/Button";
@@ -13,30 +14,40 @@ import {
   TypoExtraLargeSemiBold,
   TypoMediumSemiBold,
 } from "components/TypoGraphy";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContainer from "screens/layouts/AppContainer";
 import { countryCode } from "screens/login-signup/constants";
 import IconWrapper from "components/IconWrapper";
-import { useRef } from "react";
+import { colors } from "root/tailwind.config";
 
 const Signup = () => {
   const navigate = useNavigate();
   const touchStartY = useRef(0);
+  const touchMoveY = useRef(0);
   const [phone, setPhone] = useState();
   const [isVisible, setIsVisible] = useState(true);
 
   const handleTouchStart = (e) => {
     touchStartY.current = e.touches[0].clientY;
+    touchMoveY.current = 0;
   };
 
-  const handleTouchEnd = (e) => {
-    const touchEndY = e.changedTouches[0].clientX;
-    if (touchStartY.current - touchEndY > 20) {
-      console.log("scroll up");
-      setIsVisible(false);
+  const handleTouchMove = (e) => {
+    touchMoveY.current = e.touches[0].clientY - touchStartY.current;
+  };
+
+  const handleTouchEnd = () => {
+    const movementThreshold = 20;
+    if (Math.abs(touchMoveY.current) > movementThreshold) {
+      if (touchMoveY.current < 0) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
     }
-    if (touchEndY - touchStartY.current > 20) setIsVisible(true);
+    touchStartY.current = 0;
+    touchMoveY.current = 0;
   };
 
   return (
@@ -48,10 +59,24 @@ const Signup = () => {
             : "transform translate-y-[-100%] md:translate-y-0"
         }`}
         onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="bg-primary-blue flex flex-col items-center justify-center h-screen overflow-hidden">
+        <div className="relative bg-primary-blue flex flex-col items-center justify-center h-screen overflow-hidden">
           <IconWrapper size="xxlarge" Icon={RegisterSvg} />
+          <div className="flex md:hidden flex-col absolute bottom-8 items-center animate-bounce">
+            <IconWrapper
+              Icon={DobleChevronUpIcon}
+              size="large"
+              color={colors.primary.white}
+            />
+            <TypoMediumSemiBold color="text-primary-white">
+              Slide up to
+            </TypoMediumSemiBold>
+            <TypoExtraLargeSemiBold color="text-primary-white">
+              Signup!
+            </TypoExtraLargeSemiBold>
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-16 px-4 py-8">
           <span className="flex flex-col gap-2 items-center">
