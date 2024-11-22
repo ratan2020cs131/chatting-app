@@ -9,3 +9,4 @@ export { default as LockIcon } from "assets/svg/LockIcon";
 export { default as RightArrowIcon } from "assets/svg/RightArrowIcon";
 export { default as LoginSvg } from "assets/svg/LoginSvg";
 export { default as RegisterSvg } from "assets/svg/RegisterSvg";
+export { default as DobleChevronUpIcon } from "assets/svg/DobleChevronUpIcon";

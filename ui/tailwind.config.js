@@ -1,5 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-
 export const colors = {
   primary: {
     white: "#fff",
@@ -31,12 +29,17 @@ export default {
       },
       animation: {
         loading: "rotate 2s infinite",
+        bounce: "bounce 1.5s infinite",
       },
       keyframes: {
         rotate: {
           "0%": { transform: "rotate(0deg)" },
           "50%": { transform: "rotate(180deg)" },
           "100%": { transform: "rotate(360deg)" },
+        },
+        bounce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
         },
       },
       boxShadow: {
